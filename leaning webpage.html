@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Learning Page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .progress {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Course Title</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#section1" id="section1-link">Section 1</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#section2" id="section2-link">Section 2</a>
+        </li>
+        <!-- Add more sections/subsections as needed -->
+      </ul>
+      <div class="dropdown">
+        <button class="btn btn-outline-light dropdown-toggle" type="button" id="languageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Language
+        </button>
+        <div class="dropdown-menu" aria-labelledby="languageDropdown">
+          <a class="dropdown-item" href="#" onclick="switchLanguage('en')">English</a>
+          <a class="dropdown-item" href="#" onclick="switchLanguage('hi')">हिन्दी</a>
+          <!-- Add more language options as needed -->
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mt-5">
+    <!-- Progress Bar -->
+    <div class="progress" id="progressBar">
+      <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
+    <!-- Section 1 -->
+    <section id="section1">
+      <h2 id="section1-heading">Section 1</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Video Content</h3>
+          <!-- Video Player -->
+          <video controls width="100%" height="mr-auto">
+            <source src="C:\Users\Desktop\Downloads\Bootstrap.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="col-md-6">
+          <h3 id="section1-text-heading">Text Content</h3>
+          <p id="section1-text">
+            Bootstrap:
+            
+            Bootstrap is a popular front-end framework for developing responsive and mobile-first websites and web applications. Developed by Twitter, Bootstrap provides a comprehensive set of pre-designed components, CSS styles, and JavaScript plugins, making it easy to create visually appealing and functional web interfaces.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section id="section2">
+      <h2 id="section2-heading">Section 2</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Audio Content</h3>
+          <!-- Audio Player -->
+          <audio controls>
+            <source src="C:\Users\Desktop\Downloads\Dr. Vikas Divyakirti.m4a" type="audio/mp3">
+            Your browser does not support the audio tag.
+          </audio>
+        </div>
+        <div class="col-md-6">
+          <h3 id="section2-text-heading">Text Content</h3>
+          <p id="section2-text">
+            UPSC (Union Public Service Commission):
+            
+            The Union Public Service Commission (UPSC) is India's central recruiting agency responsible for conducting prestigious civil service examinations and selecting candidates for key governmental positions. Established under Article 315 of the Constitution of India, UPSC plays a pivotal role in shaping the country's administrative framework.</p>
+        </div>
+      </div>
+    </section>
+    <!-- Add more sections/subsections as needed -->
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+      <span class="text-muted">&copy; 2024 Course Learning Page</span>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Custom JavaScript for Progress Tracking -->
+  <script>
+    // Update progress bar based on scroll position
+    window.addEventListener('scroll', function() {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.pageYOffset / totalHeight) * 100;
+      document.querySelector('.progress-bar').style.width = progress + '%';
+    });
+  </script>
+
+  <!-- Custom JavaScript for Language Selection -->
+  <script>
+    // Function to switch language
+    function switchLanguage(language) {
+      // You need to replace these translations with your actual translations
+      const translations = {
+        'en': {
+          'section1': 'Section 1',
+          'section2': 'Section 2',
+          'section1-text': 'This is some text content for Section 1.',
+          'section2-text': 'This is some text content for Section 2.'
+        },
+        'hi': {
+          'section1': 'सेक्शन 1',
+          'section2': 'सेक्शन 2',
+          'section1-text': 'यह अनुभाग 1 के लिए कुछ पाठ की सामग्री है।',
+          'section2-text': 'यह अनुभाग 2 के लिए कुछ पाठ की सामग्री है।'
+        }
+        // Add more translations for other languages as needed
+      };
+
+      // Update headings and text content with translations
+      document.getElementById('section1-heading').innerText = translations[language]['section1'];
+      document.getElementById('section2-heading').innerText = translations[language]['section2'];
+      document.getElementById('section1-text-heading').innerText = translations[language]['section1-text'];
+      document.getElementById('section2-text-heading').innerText = translations[language]['section2-text'];
+    }
+    function pauseOtherMedia(currentMedia) {
+      const allMedia = document.querySelectorAll('audio, video');
+      allMedia.forEach(media => {
+        if (media !== currentMedia) {
+          media.pause();
+        }
+      });
+    }
+    const allMediaElements = document.querySelectorAll('audio, video');
+    allMediaElements.forEach(media => {
+      media.addEventListener('play', () => {
+        pauseOtherMedia(media);
+      });
+    });
+  </script>
+</body>
+</html>
